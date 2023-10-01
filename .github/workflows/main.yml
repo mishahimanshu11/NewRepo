@@ -1,28 +1,29 @@
-name:publish 
+name: Publish 🚀
 
 on:
- workflow_dispatch:
+  workflow_dispatch:
   push:
-   branches:
-    -feature
+    branches:
+    - feature
+
 
 jobs:
   publish:
-  runs on: ubuntu-latest
-  steps:
-   - uses: action/checkout@v3
-   - name: Setup .Net
-    uses:action/setup-dotnet@v3
-    with:
-    dotnet-version '4.6.1'
-
-    name: Restore
-    run: dotnet restore ./ASPWebapplication.sln
-    - name : Build
-     run: dotnet publish ./ASPWebapplication.sln --configuration Release --no-restore
-
-     - name: Publish
-        run: dotnet publish ./CurrentTimeService.sln --configuration Release --no-build 
+    runs-on: ubuntu-latest
     
-    
-  
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '4.6.1'
+          
+      - name: Restore
+        run: dotnet restore ./ASPWebapplication.sln
+        
+      - name: Build
+        run: dotnet build ./ASPWebapplication.sln --configuration Release --no-restore
+        
+      - name: Publish
+        run: dotnet publish ./ASPWebapplication.sln --configuration Release --no-build 
