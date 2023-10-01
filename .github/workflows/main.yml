@@ -1,4 +1,4 @@
-name: .NET
+name: .pblish1
 
 on:
   push:
