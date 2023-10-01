@@ -1,4 +1,4 @@
-name: Publish1 🚀
+name: Publish2 🚀
 
 on:
   workflow_dispatch:
@@ -20,10 +20,10 @@ jobs:
           dotnet-version: '6.0.x'
           
       - name: Restore
-        run: dotnet restore ./ASPWebapplication/ASPWebapplication/ASPWebapplication.csproj
+        run: dotnet restore ./ASPWebapplication.sln
         
       - name: Build
-        run: dotnet build ./ASPWebapplication/ASPWebapplication/ASPWebapplication.csproj --configuration Release --no-restore
+        run: dotnet build .ASPWebapplication.sln --configuration Release --no-restore
         
       - name: Publish
-        run: dotnet publish ./ASPWebapplication/ASPWebapplication/ASPWebapplication.csproj --configuration Release --no-build 
+        run: dotnet publish .ASPWebapplication.sln --configuration Release --no-build 
