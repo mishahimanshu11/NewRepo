@@ -1,27 +1,29 @@
-name: .pblish1
+name: Publish1 🚀
 
 on:
+  workflow_dispatch:
   push:
-    branches: [ feature ]
- 
+    branches:
+    - feature
+
 
 jobs:
-  build:
-
+  publish:
     runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 6.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
-    - name: Publish
-      run: dotnet publish ASPWebapplication\ASPWebapplication\ASPWebapplication.csproj -c Release
     
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.0.x'
+          
+      - name: Restore
+        run: dotnet restore ./ASPWebapplication/ASPWebapplication/ASPWebapplication.csproj
+        
+      - name: Build
+        run: dotnet build ./ASPWebapplication/ASPWebapplication/ASPWebapplication.csproj --configuration Release --no-restore
+        
+      - name: Publish
+        run: dotnet publish ./ASPWebapplication/ASPWebapplication/ASPWebapplication.csproj --configuration Release --no-build 
