@@ -20,10 +20,10 @@ jobs:
           dotnet-version: '6.0.x'
           
       - name: Restore
-        run: dotnet restore ./WebApplication2/WebApplication2.sln
+        run: dotnet restore ./ConsoleApplication1/ConsoleApplication1.sln
         
       - name: Build
-        run: dotnet build ./WebApplication2/WebApplication2.sln --configuration Release --no-restore
+        run: dotnet build ./ConsoleApplication1/ConsoleApplication1.sln --configuration Release --no-restore
         
       - name: Publish
-        run: dotnet publish ./WebApplication2/WebApplication2.sln --configuration Release --no-build 
+        run: dotnet publish ./ConsoleApplication1/ConsoleApplication1.sln --configuration Release --no-build 
